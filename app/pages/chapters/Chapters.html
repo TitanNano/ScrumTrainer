@@ -8,22 +8,26 @@
 </ion-header>
 
 <ion-content padding="true" class="has-header">
-    <ion-list id="kapitel-list1">
+    <ion-list id="kapitel-list1" (click)="itemSelected(item)">
         <ion-item class="item-icon-left item-icon-right" id="kapitel-list-item4">
-            <i class="icon ion-information-circled"></i>Intro
-            <i class="icon ion-android-checkbox-outline"></i>
+            <ion-icon name="information" item-left></ion-icon>
+            Intro
+            <ion-icon name="checkbox-outline" item-right></ion-icon>
         </ion-item>
         <ion-item class="item-icon-left item-icon-right" id="kapitel-list-item5" ui-sref="menu.kapitel1">
-            <i class="icon ion-android-person"></i>Team Mitglied
-            <i class="icon ion-android-checkbox-outline"></i>
+            <ion-icon name="person" item-left></ion-icon>
+            Team Mitglied
+            <ion-icon name="checkbox-outline" item-right></ion-icon>
         </ion-item>
         <ion-item class="item-icon-left item-icon-right" id="kapitel-list-item6">
-            <i class="icon ion-bowtie"></i>Manager
-            <i class="icon ion-android-checkbox-outline-blank"></i>
+            <ion-icon name="bowtie" item-left></ion-icon>
+            Manager
+            <ion-icon name="checkbox-outline-blank" item-right></ion-icon>
         </ion-item>
         <ion-item class="item-icon-left item-icon-right" id="kapitel-list-item7">
-            <i class="icon ion-android-star"></i>Berater
-            <i class="icon ion-android-checkbox-outline-blank"></i>
+            <ion-icon name="star" item-left></ion-icon>
+            Berater
+            <ion-icon name="checkbox-outline-blank" item-right></ion-icon>
         </ion-item>
     </ion-list>
 </ion-content>

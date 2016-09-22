@@ -14,15 +14,15 @@ class MyApp {
 
   rootPage: any = Chapters;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(public platform: Platform) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Kapitel', component: Chapters },
-      { title: 'Einstellungen', component: Settings }
+      { title: 'Kapitel', component: Chapters, icon: 'home' },
+      { title: 'Einstellungen', component: Settings, icon: 'settings' }
     ];
 
   }
