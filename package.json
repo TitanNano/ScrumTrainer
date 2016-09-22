@@ -1,0 +1,31 @@
+{
+  "name": "scrum-trainer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TitanNano/ScrumTrainer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TitanNano/ScrumTrainer/issues"
+  },
+  "homepage": "https://github.com/TitanNano/ScrumTrainer#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-webpack": "^1.5.0",
+    "typescript": "^1.8.10"
+  },
+  "dependencies": {
+    "angular2": "^2.0.0-beta.17",
+    "es6-shim": "^0.35.1",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-beta.6",
+    "zone.js": "^0.6.23"
+  }
+}
