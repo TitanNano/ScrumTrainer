@@ -12,22 +12,30 @@
 </ion-header>
 
 
-<ion-content padding="true" class="has-header">
+<ion-content class="has-header">
 
-<ion-slides pager>
+    <ion-item>
+        <ion-range min="0" max="3" snaps="true" secondary>
+            <ion-icon range-right small name="trophy"></ion-icon>
+        </ion-range>
+    </ion-item>
 
-  <ion-slide style="background-color: green">
-    <h2>Slide 1</h2>
-  </ion-slide>
+    <ion-slides pager>
+        <ion-slide>
+          <quizPage>1
+          </quizPage>
+        </ion-slide>
 
-  <ion-slide style="background-color: blue">
-    <h2>Slide 2</h2>
-  </ion-slide>
+        <ion-slide>
+          <quizPage>2
+          </quizPage>
+        </ion-slide>
 
-  <ion-slide style="background-color: red">
-    <h2>Slide 3</h2>
-  </ion-slide>
+        <ion-slide>
+          <quizPage>3
+          </quizPage>
+        </ion-slide>
 
-</ion-slides>
+    </ion-slides>
 
 </ion-content>

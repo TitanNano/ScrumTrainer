@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Chapter } from '../chapter/Chapter';
+
 @Component({
+  selector: 'quizPage',
   templateUrl: 'build/pages/chapters/quizPage.html'
 })
-export class Chapters {
+export class QuizPage
+{
 
-  constructor(public navCtrl: NavController) {
-  }
+    constructor(public chapter: Chapter)
+    {
+
+    }
 }
