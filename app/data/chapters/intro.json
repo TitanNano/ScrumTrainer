@@ -1,0 +1,28 @@
+{
+    "title": "Intro",
+    "icon": "bulb",
+    "description": "",
+    "parts":
+    [
+        {
+            "body"      : "choose the right answer to be filled here: ___",
+            "options"   :
+            [
+                "right option",
+                "wrong 1",
+                "wrong 2",
+                "wrong 3"
+            ]
+        },
+        {
+            "body"      : "pick the right answer :\n ___ one more last time",
+            "options"   :
+            [
+                "right option",
+                "wrong 1",
+                "wrong 2",
+                "wrong 3"
+            ]
+        }
+    ]
+}

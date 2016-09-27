@@ -4,7 +4,7 @@ import { StatusBar } from 'ionic-native';
 
 import { Chapters } from './pages/chapters/Chapters';
 import { Settings } from './pages/settings/Settings';
-import { Chapter } from './pages/chapter/Chapter';
+import { ChapterView } from './pages/chapter/Chapter';
 
 @Component({
   templateUrl: 'build/app.html'

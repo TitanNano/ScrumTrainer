@@ -1,26 +1,31 @@
+import { Chapter } from './../../models/Chapter';
 import { Component } from '@angular/core';
-import { ModalController, ViewController } from 'ionic-angular';
-import { Chapters } from '../chapters/Chapters';
+import { ModalController, Modal, ViewController } from 'ionic-angular';
 
+import { Chapters } from '../chapters/Chapters';
 import { QuizPage } from '../quizPage/QuizPage';
 
 @Component({
-    selector: 'chapter',
-  templateUrl: 'build/pages/chapter/Chapter.html'
+    selector:       'chapter',
+    templateUrl:    'build/pages/chapter/Chapter.html'
+    ,directives:     [QuizPage]
 })
-
-export class Chapter
+export class ChapterView
 {
-    
-    constructor(public chaptersCtrl: ViewController)
+    public chapterData : Chapter;
+
+    constructor( public modal: ViewController )
     {
-        console.log(chaptersCtrl);
+        let params = modal.getNavParams()
+        if( params.data.chapter )
+        {
+            this.chapterData = params.data.chapter;
+        }
+        console.log("chapterData",this.chapterData);
     }
 
     dismiss()
     {
-        console.log("dismiss");
-        this.chaptersCtrl.dismiss();
+        this.modal.dismiss();
     }
-
 }

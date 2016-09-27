@@ -1,13 +1,14 @@
 import { Chapter } from './../../models/Chapter';
 import { Component } from '@angular/core';
-import { Chapter as ChapterView } from '../chapter/Chapter';
+import { ChapterView } from '../chapter/Chapter';
 import { NavController, PopoverController, ModalController, NavParams } from 'ionic-angular';
 import {Http} from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
 @Component({
-  templateUrl: 'build/pages/chapters/Chapters.html'
+  templateUrl: 'build/pages/chapters/Chapters.html',
+  directives: [ChapterView]
 })
 export class Chapters {
 
@@ -24,14 +25,15 @@ export class Chapters {
     console.log(chapter);
     //this.navCtrl.push(Chapter);
     //this.popoverCtrl.create(Chapter,{ nr :chapterNumber}).present();
-    this.modalCtrl.create(ChapterView, { chapter: Chapter }).present();
+    this.modalCtrl.create(ChapterView, { "chapter": chapter }).present();
   }
 
   public ngOnInit() {
     const chapters = {
+      'Intro': 'build/data/chapters/intro.json',
       'TeamMember': 'build/data/chapters/team_member.json',
       'Manager': 'build/data/chapters/manager.json',
-      'Consultant': 'build/data/chapters/consultant.json',
+      'Consultant': 'build/data/chapters/consultant.json'
     };
 
     Object.keys(chapters).forEach(key => {
