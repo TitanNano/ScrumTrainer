@@ -1,10 +1,14 @@
 
 
-<ion-content padding="false" class="has-header" height="100%">
-    <h3>quiz Page</h3>
-    <h2>quiz Page</h2>
-    <h1>quiz Page</h1>
-    <h2>quiz Page</h2>
-    <h3>quiz Page</h3>
-    
+
+<ion-content padding="false" style="margin-top: 132px; padding-bottom: 200px;">
+
+    <h1>{{pageData.body}}</h1>
+    <button dark outline *ngFor="let option of pageData.options">
+        {{option}}
+    </button>
 </ion-content>
+
+
+
+

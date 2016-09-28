@@ -1,40 +1,60 @@
 <ion-header>
     
     <ion-navbar>
-        <ion-title>
+        <ion-title start>
             <ion-icon name="{{chapterData.icon}}" item-left></ion-icon>
             {{chapterData.title}}
         </ion-title>
-        <ion-buttons end (click)="dismiss()">
-                <button>
-                    <ion-icon name="close-circle"></ion-icon>
-                </button>
-        </ion-buttons>
         
+        <ion-buttons end>
+            <button danger disabled>
+                <ion-icon name="heart"></ion-icon>
+            </button>
+            <button danger>
+                <ion-icon name="heart"></ion-icon>
+            </button>
+            <button danger>
+                <ion-icon name="heart"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-buttons end disabled>
+            <button>
+                <ion-icon name="placeholder"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-buttons end (click)="dismiss()">
+            <button>
+                <ion-icon name="close-circle"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
+    
     <ion-item>
-        <ion-range min="0" max="{{chapterData.parts.length}}" snaps="true" secondary>
+        <ion-range #ranger min="0" max="{{chapterData.parts.length-1}}" snaps="true" secondary item-left>
             <ion-icon range-right small name="trophy"></ion-icon>
         </ion-range>
     </ion-item>
 </ion-header>
 
 
-<ion-content class="has-header" item-height="100%" height="100%" style="background: #04d47f; top: 115px; bottom: 0px;">
+<ion-content class="has-header" style="background: #04d47f;">
 
-    <ion-slides pager="true">
+    <ion-slides #slider pager="true">
 
-        <ion-slide *ngFor="let page of chapterData.parts" id="kapitel-list-item{{$index}}" >
-            <quizPage>
-                {{page}}
+        <ion-slide *ngFor="let page of chapterData.parts">
+            <quizPage [pageData]="page">
             </quizPage>
-            <!--
-            <ion-icon name="{{chapter.icon}}" item-left></ion-icon>
-            {{chapter.title}}
-            <ion-icon name="checkbox-outline" item-right></ion-icon>
-            -->
         </ion-slide>
 
     </ion-slides>
 
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <button secondary (click)="goNext()">
+            Next Question
+        <ion-icon name="arrow-round-forward"></ion-icon>
+        </button>
+    </ion-toolbar>
+</ion-footer>
