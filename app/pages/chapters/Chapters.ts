@@ -10,40 +10,43 @@ import 'rxjs/add/operator/map';
   templateUrl: 'build/pages/chapters/Chapters.html',
   directives: [ChapterView]
 })
-export class Chapters {
+export class Chapters
+{
+    private chapters = new Map<string, Chapter>();
+    public chapterList = [];
 
-  private chapters = new Map<string, Chapter>();
+    constructor(public navCtrl: NavController,public popoverCtrl: PopoverController,
+        public modalCtrl: ModalController, private http: Http) {
+    }
 
-  public chapterList = [];
+    public showChapter( chapter: Chapter )
+    {
+        this.modalCtrl.create(ChapterView, { "chapter": chapter }).present();
+    }
 
-  constructor(public navCtrl: NavController,public popoverCtrl: PopoverController,
-    public modalCtrl: ModalController, private http: Http) {
-  }
+    public ngOnInit()
+    {   
+        let IntroChapterUrl = "build/data/chapters/intro.json";
+        this.http.get(IntroChapterUrl).map(req => req.json()).subscribe(introData =>
+        {
+            this.chapters.set("Intro", introData);
+            this.chapterList.push(introData);
 
-  public showChapter( chapter: Chapter ) {
-    console.log("itemSelected");
-    console.log(chapter);
-    //this.navCtrl.push(Chapter);
-    //this.popoverCtrl.create(Chapter,{ nr :chapterNumber}).present();
-    this.modalCtrl.create(ChapterView, { "chapter": chapter }).present();
-  }
+            let chapterUrl = "build/data/chapters/chapters.json";
+            this.http.get(chapterUrl).map(req => req.json()).subscribe(data =>
+            {
+                if( data.chapters )
+                {
+                    for( let key in data.chapters )
+                    {
+                        let chapterData = data.chapters[key];
+                        this.chapters.set(key, chapterData);
+                        this.chapterList.push(chapterData);
+                    }
+                }
+            });
+        });
 
-  public ngOnInit() {
-    const chapters = {
-      'Intro': 'build/data/chapters/intro.json',
-      'TeamMember': 'build/data/chapters/team_member.json',
-      'Manager': 'build/data/chapters/manager.json',
-      'Consultant': 'build/data/chapters/consultant.json'
-    };
-
-    Object.keys(chapters).forEach(key => {
-      let chapterUrl = chapters[key];
-
-      this.http.get(chapterUrl).map(req => req.json()).subscribe(data => {
-        this.chapters.set(key, data);
-        this.chapterList.push(data);
-      });
-    });
-  }
-
+        
+    }
 }

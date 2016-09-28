@@ -1,0 +1,25 @@
+{
+    "chapters":
+    [
+        {
+            "title": "Team Member",
+            "icon": "person",
+            "description": "",
+            "parts": []
+        }
+        ,
+        {
+            "title": "Manager",
+            "icon": "bowtie",
+            "description": "",
+            "parts": []
+        }
+        ,
+        {
+            "title": "Consultant",
+            "icon": "star",
+            "description": "",
+            "parts": []
+        }
+    ]
+}

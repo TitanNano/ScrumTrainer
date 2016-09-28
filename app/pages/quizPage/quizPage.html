@@ -2,7 +2,9 @@
 
 
 <ion-content padding="false" style="margin-top: 132px; padding-bottom: 200px;">
-
+    <ion-title>
+        {{pageData.body}}
+    </ion-title>
     <h1>{{pageData.body}}</h1>
     <button dark outline *ngFor="let option of pageData.options">
         {{option}}
