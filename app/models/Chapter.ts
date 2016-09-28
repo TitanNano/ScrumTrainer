@@ -1,9 +1,24 @@
+export class AnswerOption
+{
+	public body: string;
+	public isRight: boolean;
+	constructor(data)
+	{
+		Object.assign(this, data);
+	}
+}
+
 export class QuizPart
 {
 	public body: string;
-	public options: Array<string>
-	constructor(data) {
-		Object.assign(this, data);
+	public options: Array<AnswerOption>
+	constructor(data)
+	{
+		this.body = data.body;
+		for( let option of data.options )
+		{
+			this.options.push( new AnswerOption(option) );
+		}
 	}
 }
 

@@ -5,26 +5,25 @@
     "parts":
     [
         {
-            "body"      : "choose the right answer to be filled here: ___",
+            "body"      : "choose the right answer to be filled here: ........",
             "options"   :
             [
-                "right option",
-                "wrong 1",
-                "wrong 2",
-                "wrong 3"
+                { "isRight" : true,     "body" : "right option" },
+                { "isRight" : false,    "body" : "wrong" },
+                { "isRight" : false,    "body" : "also wrong" },
+                { "isRight" : false,    "body" : "totally wrong" }
             ],
-            "wrightAnswers" : [0]
+            "rightAnswers" : [0]
         },
         {
-            "body"      : "pick the right answer :\n ___ one more last time",
+            "body"      : "pick the right answer :\n ........ one more last time",
             "options"   :
             [
-                "right option",
-                "other right option",
-                "wrong 2",
-                "wrong 3"
-            ],
-            "wrightAnswers" : [0,1]
+                { "isRight" : true,     "body" : "right option" },
+                { "isRight" : true,    "body" : "other right option" },
+                { "isRight" : false,    "body" : "wrong" },
+                { "isRight" : false,    "body" : "also wrong" }
+            ]
         }
     ]
 }
