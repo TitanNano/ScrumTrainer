@@ -15,3 +15,22 @@
 {
     height: 100%;
 }
+
+.scroll-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.ion-grid {
+    padding: 0;
+    height: 100%;
+}
+
+.ion-row {
+    flex: 1;
+}
+
+.bar-button .ion-md-heart
+{
+    font-size: 0.8em;
+}
