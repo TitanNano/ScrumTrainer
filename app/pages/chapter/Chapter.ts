@@ -48,7 +48,7 @@ export class ChapterView implements OnInit
         let wrongs = 0;
         for( let part of this.chapterData.parts )
         {
-            if( part.answered && ! part.allRightAnswers )
+            if( part.answered && !part.allRightAnswers )
             {
                 wrongs++;
             }
@@ -73,7 +73,20 @@ export class ChapterView implements OnInit
 
     dismiss()
     {
-        this.modal.dismiss();
+        let allAnswered = this.chapterData.parts.length > 0 ? true : false;
+        
+        for( let part of this.chapterData.parts )
+        {
+            if (part.answered == false)
+            {
+                allAnswered = false;
+            }
+        }
+
+        if( allAnswered )
+        {
+            this.chapterData.allAnswered = allAnswered;
+        }
 
         for( let part of this.chapterData.parts )
         {
@@ -83,5 +96,7 @@ export class ChapterView implements OnInit
                 option.isSelected = false;
             }
         }
+
+        this.modal.dismiss();
     }
 }

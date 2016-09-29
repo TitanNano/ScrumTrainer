@@ -27,7 +27,10 @@ export class QuizPage implements OnInit
         
         for( let option of this.pageData.options )
 		{
-			if( option.isRight != option.isSelected )
+			if(
+                ( option.isRight == true && !option.isSelected ) ||
+                ( option.isRight == false && option.isSelected )
+            )
 			{
 				this.allRightAnswers = false;
 			}

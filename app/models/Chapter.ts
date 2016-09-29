@@ -34,6 +34,7 @@ export class Chapter
 	public description: string;
 	public parts: Array<QuizPart>;
 	public icon: string;
+	public allAnswered: boolean = false;
 
 	constructor(data)
 	{
