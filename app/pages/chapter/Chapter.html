@@ -1,55 +1,74 @@
 <ion-header>
     
     <ion-navbar>
-        <ion-title start>
+        <ion-label start style="margin-left: 8px;">
             <ion-icon name="{{chapterData.icon}}" item-left></ion-icon>
             {{chapterData.title}}
-        </ion-title>
+        </ion-label>
         
-        <ion-buttons start>
-            <button danger>
-                <ion-icon name="heart"></ion-icon>
+        <ion-buttons end style="margin-right: 13px;">
+            <button *ngIf="wrongAnswers()<1" danger>
+                <ion-icon style="font-size: 1em; min-width: 16px;" name="heart"></ion-icon>
             </button>
-            <button danger>
-                <ion-icon name="heart"></ion-icon>
+            <button *ngIf="wrongAnswers()>=1" danger disabled>
+                <ion-icon style="font-size: 1em; min-width: 16px;" name="heart-outline" ></ion-icon>
             </button>
-            <button danger>
-                <ion-icon name="heart"></ion-icon>
+            <button *ngIf="wrongAnswers()<2" danger>
+                <ion-icon style="font-size: 1em; min-width: 16px;" name="heart"></ion-icon>
+            </button>
+            <button *ngIf="wrongAnswers()>=2" danger disabled>
+                <ion-icon style="font-size: 1em; min-width: 16px;" name="heart-outline" ></ion-icon>
+            </button>
+            <button *ngIf="wrongAnswers()<3" danger>
+                <ion-icon style="font-size: 1em; min-width: 16px;" name="heart"></ion-icon>
+            </button>
+            <button *ngIf="wrongAnswers()>=3" danger disabled>
+                <ion-icon style="font-size: 1em; min-width: 16px;" name="heart-outline" ></ion-icon>
             </button>
         </ion-buttons>
         <ion-buttons end (click)="dismiss()">
-            <button>
+            <button small dark>
                 <ion-icon name="close-circle"></ion-icon>
             </button>
         </ion-buttons>
     </ion-navbar>
     
     <ion-item>
-        <ion-range #ranger min="0" max="{{chapterData.parts.length-1}}" snaps="true" secondary item-left>
-            <ion-icon range-right small name="trophy"></ion-icon>
+        <ion-range #ranger min="0" max="{{chapterData.parts.length}}" snaps="true" secondary item-left [(ngModel)]="currentIndex">
+            <ion-icon  range-right small name="trophy"></ion-icon>
         </ion-range>
     </ion-item>
 </ion-header>
 
 
 <ion-content class="has-header" style="background: #04d47f;">
+    <ion-slides #slider (ionDidChange)="onSlideChanged()">
 
-    <ion-slides #slider pager="true">
-
-        <ion-slide *ngFor="let page of chapterData.parts">
-            <quizPage [pageData]="page">
-            </quizPage>
+        <ion-slide *ngFor="let page of chapterData.parts" >
+            <quizPage [pageData]="page"></quizPage>
         </ion-slide>
 
     </ion-slides>
-
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="isEnd!=true && chapterData.parts[currentIndex] && chapterData.parts[currentIndex].answered">
     <ion-toolbar>
-        <button end  disabled secondary (click)="goNext()">
-            Weiter
-        <ion-icon end name="play"></ion-icon>
-        </button>
+        <ion-buttons end>
+            <button for secondary (click)="goNext()">
+                Weiter
+            <ion-icon end name="play"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
+
+<ion-footer *ngIf="isEnd        && chapterData.parts[currentIndex] && chapterData.parts[currentIndex].answered">
+    <ion-toolbar>
+        <ion-buttons end>
+            <button for secondary (click)="dismiss()">
+                Beenden
+            <ion-icon end name="trophy"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-footer>

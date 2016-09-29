@@ -12,10 +12,13 @@ import { QuizPage } from '../quizPage/QuizPage';
     templateUrl:    'build/pages/chapter/Chapter.html'
     ,directives:     [QuizPage]
 })
-export class ChapterView
+
+export class ChapterView implements OnInit
 {
     public chapterData : Chapter;
-    
+    public currentIndex = 0;
+    public isEnd = false;
+
     @ViewChild('ranger') ranger: Range;
     @ViewChild('slider') slider: Slides;
 
@@ -26,18 +29,59 @@ export class ChapterView
         {
             this.chapterData = params.data.chapter;
         }
-        //this.slider.getSlider().lockSwipes()
-        //console.log("chapterData",this.chapterData);
+    }
+
+    ngOnInit()
+    {
+        this.ranger.pin = false;
+    }
+
+    onSlideChanged()
+    {
+        this.currentIndex = this.slider.getActiveIndex();
+        this.isEnd = this.currentIndex == this.slider.length()-1;
+        console.log("this.currentIndex",this.currentIndex);
+    }
+
+    wrongAnswers()
+    {
+        let wrongs = 0;
+        for( let part of this.chapterData.parts )
+        {
+            if( part.answered && ! part.allRightAnswers )
+            {
+                wrongs++;
+            }
+        }
+        return wrongs;
     }
 
     goNext()
     {
-        this.slider.slideNext();
-        this.ranger.value = this.ranger.value + 1;
+        //this.slider.isEnd
+        if( this.isEnd != true )
+        {
+            this.slider.slideNext();
+            this.ranger.value = this.currentIndex;
+        }
+    }
+
+    public allRightAnswers()
+    {
+        return this.chapterData.parts[this.currentIndex].allRightAnswers;
     }
 
     dismiss()
     {
         this.modal.dismiss();
+
+        for( let part of this.chapterData.parts )
+        {
+            part.answered = false;
+            for( let option of part.options )
+            {
+                option.isSelected = false;
+            }
+        }
     }
 }

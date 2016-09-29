@@ -11,20 +11,31 @@
             <ion-col>
                 <ion-list>
                     <ion-item *ngFor="let option of pageData.options">
-                        <ion-label *ngIf="option.isRight" secondary ><ion-icon end name="checkmark-circle"></ion-icon></ion-label>
-                        <ion-label *ngIf="!option.isRight" danger><ion-icon end name="close-circle"></ion-icon></ion-label>
-                        <ion-label>{{option.body}}</ion-label>
-                        <ion-checkbox></ion-checkbox>
+                        <ion-label left>{{option.body}}</ion-label>
+                        <ion-checkbox [(ngModel)]="option.isSelected" disabled="{{revealingRightAnswer}}"></ion-checkbox>
+                        <ion-label end style="margin:0;" *ngIf="revealingRightAnswer &&  option.isRight == option.isSelected && option.isSelected" secondary  ><ion-icon end small name="checkmark-circle"></ion-icon></ion-label>
+                        <ion-label end style="margin:0;" *ngIf="revealingRightAnswer &&  option.isRight && !option.isSelected" danger  ><ion-icon end small name="checkmark-circle"></ion-icon></ion-label>
+                        <ion-label end style="margin:0;" *ngIf="revealingRightAnswer && !option.isRight && option.isSelected" danger><ion-icon end small name="close-circle"></ion-icon></ion-label>
                     </ion-item>
                 </ion-list>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col>
-                <button full>
+                <ion-nav-buttons (click)="revealRightAnswer()">
+                <button round *ngIf="!revealingRightAnswer">
                     <ion-icon left name="checkmark-circle"></ion-icon>
                     <ion-label>überprüfen</ion-label>
                 </button>
+                <button round disabled danger *ngIf="revealingRightAnswer && allRightAnswers==false">
+                    <ion-icon left name="close-circle"></ion-icon>
+                    <ion-label>überprüfen</ion-label>
+                </button>
+                <button round disabled secondary *ngIf="revealingRightAnswer && allRightAnswers">
+                    <ion-icon left name="checkmark-circle"></ion-icon>
+                    <ion-label>überprüfen</ion-label>
+                </button>
+                </ion-nav-buttons>
             </ion-col>
         </ion-row>
     </ion-grid>

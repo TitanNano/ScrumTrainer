@@ -30,7 +30,7 @@
     flex: 1;
 }
 
-.bar-button .ion-md-heart
+.checkbox-disabled + .item-inner ion-label
 {
-    font-size: 0.8em;
+    opacity: 0.8 !important;
 }

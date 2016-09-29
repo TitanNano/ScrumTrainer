@@ -12,13 +12,29 @@ import { Chapter, QuizPart } from './../../models/Chapter';
 export class QuizPage implements OnInit
 {
     @Input() pageData:QuizPart;
-    
+    public revealingRightAnswer = false;
+    public allRightAnswers = false;
+
     constructor()
     {
-        console.log("pageData",this.pageData);
-        //console.log(chapter);
     }
 
+    public revealRightAnswer()
+    {
+        this.revealingRightAnswer = true;
+        this.pageData.answered = true;
+        this.allRightAnswers = true;
+        
+        for( let option of this.pageData.options )
+		{
+			if( option.isRight != option.isSelected )
+			{
+				this.allRightAnswers = false;
+			}
+		}
+        
+        this.pageData.allRightAnswers = this.allRightAnswers;
+    }
 
     ngOnInit()
     {

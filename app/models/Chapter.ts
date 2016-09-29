@@ -2,6 +2,8 @@ export class AnswerOption
 {
 	public body: string;
 	public isRight: boolean;
+	public isSelected: boolean;
+
 	constructor(data)
 	{
 		Object.assign(this, data);
@@ -12,6 +14,9 @@ export class QuizPart
 {
 	public body: string;
 	public options: Array<AnswerOption>
+	public answered: boolean = false;
+	public allRightAnswers: boolean = false;
+	
 	constructor(data)
 	{
 		this.body = data.body;
@@ -20,6 +25,7 @@ export class QuizPart
 			this.options.push( new AnswerOption(option) );
 		}
 	}
+
 }
 
 export class Chapter
