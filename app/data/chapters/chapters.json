@@ -38,7 +38,7 @@
                     ]
                 },
                 {
-                    "body"      : "ist Scrum ein ...., indem man verschiedene Verfahren und Techniken anwenden kann.",
+                    "body"      : "Scrum ist ein ...., indem man verschiedene Verfahren und Techniken anwenden kann.",
                     "options"   :
                     [
                         { "isRight" : true,     "body" : "Rahmen" },
