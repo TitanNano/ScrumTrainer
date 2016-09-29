@@ -34,7 +34,7 @@
     </ion-navbar>
     
     <ion-item>
-        <ion-range #ranger min="0" max="{{chapterData.parts.length}}" snaps="true" secondary item-left [(ngModel)]="currentIndex">
+        <ion-range #ranger min="0" max="{{chapterData.parts.length}}" snaps="true" secondary item-left [(ngModel)]="rangerActiveIndex">
             <ion-icon  range-right small name="trophy"></ion-icon>
         </ion-range>
     </ion-item>

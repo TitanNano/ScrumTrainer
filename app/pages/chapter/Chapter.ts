@@ -17,6 +17,7 @@ export class ChapterView implements OnInit
 {
     public chapterData : Chapter;
     public currentIndex = 0;
+    public rangerActiveIndex = 1;
     public isEnd = false;
 
     @ViewChild('ranger') ranger: Range;
@@ -40,6 +41,7 @@ export class ChapterView implements OnInit
     {
         this.currentIndex = this.slider.getActiveIndex();
         this.isEnd = this.currentIndex == this.slider.length()-1;
+        this.rangerActiveIndex = this.currentIndex + 1
         console.log("this.currentIndex",this.currentIndex);
     }
 
