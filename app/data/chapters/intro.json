@@ -5,24 +5,44 @@
     "parts":
     [
         {
-            "body"      : "choose the right answer to be filled here: ........",
+            "body"      : "Scrum ist ein Vorgehensmodell ....., insbesondere in der Softwareentwicklung.",
             "options"   :
             [
-                { "isRight" : true,     "body" : "right option" },
-                { "isRight" : false,    "body" : "wrong" },
-                { "isRight" : false,    "body" : "also wrong" },
-                { "isRight" : false,    "body" : "totally wrong" }
+                { "isRight" : true,     "body" : "des Projektmanagements" },
+                { "isRight" : false,    "body" : "des Marketings" },
+                { "isRight" : false,    "body" : "der Buchhaltung" },
+                { "isRight" : false,    "body" : "der Geschäftsführung" }
             ],
             "rightAnswers" : [0]
         },
         {
-            "body"      : "pick the right answer :\n ........ one more last time",
+            "body"      : "Er beruht auf der Erfahrung, dass viele Entwicklungsprojekte zu .... sind, um in einen vollumfänglichen Plan gefasst werden zu können.",
             "options"   :
             [
-                { "isRight" : true,     "body" : "right option" },
-                { "isRight" : true,    "body" : "other right option" },
-                { "isRight" : false,    "body" : "wrong" },
-                { "isRight" : false,    "body" : "also wrong" }
+                { "isRight" : false,     "body" : "einfach" },
+                { "isRight" : true,    "body" : "komplex" },
+                { "isRight" : false,    "body" : "komisch" },
+                { "isRight" : false,    "body" : "Salat" }
+            ]
+        },
+        {
+            "body"      : "Die Erfinder des Scrum waren ..... und Ken Schwaber.",
+            "options"   :
+            [
+                { "isRight" : false,     "body" : "Tim Cook" },
+                { "isRight" : true,    "body" : "Jeff Sutherland" },
+                { "isRight" : false,    "body" : "Garfield" },
+                { "isRight" : false,    "body" : "Brot" }
+            ]
+        },
+        {
+            "body"      : "ist Scrum ein ...., indem man verschiedene Verfahren und Techniken anwenden kann.",
+            "options"   :
+            [
+                { "isRight" : true,     "body" : "Rahmen" },
+                { "isRight" : false,    "body" : "Framework" },
+                { "isRight" : false,    "body" : "API" },
+                { "isRight" : false,    "body" : "Runtime Environment" }
             ]
         }
     ]
