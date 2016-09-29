@@ -2,9 +2,9 @@
     "chapters":
     [
         {
-            "title": "Team Member",
+            "title": "Team Player",
             "icon": "person",
-            "description": "",
+            "description": "Lerne Scrum Basics",
             "parts":     [
                 {
                     "body"      : "Scrum ist ein Vorgehensmodell ....., insbesondere in der Softwareentwicklung.",
@@ -52,13 +52,13 @@
         {
             "title": "Manager",
             "icon": "bowtie",
-            "description": "",
+            "description": "Dein Wissen ist Macht",
             "parts": []
         },
         {
             "title": "Consultant",
             "icon": "star",
-            "description": "",
+            "description": "SCRUM ist deine Religion",
             "parts": []
         }
     ]
