@@ -26,6 +26,6 @@ The App has multiple Chapters.
 
 ## Technologies
 
-Ionic 2     (https://ionicframework.com/)
-Angular 2   (https://angular.io/)
-TypeScript  (https://www.typescriptlang.org)
+- Ionic 2     (https://ionicframework.com/)
+- Angular 2   (https://angular.io/)
+- TypeScript  (https://www.typescriptlang.org)
