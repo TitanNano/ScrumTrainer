@@ -1,5 +1,6 @@
-# ScrumTrainer - Scrum Tuttorial App
-===========================================
+# ScrumTrainer 
+####Scrum Tuttorial App
+
 
 ## What is ScrumTrainer?
 
