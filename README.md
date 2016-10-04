@@ -1,5 +1,4 @@
-# ScrumTrainer
-Scrum Tuttorial App
+# ScrumTrainer - Scrum Tuttorial App
 ===========================================
 
 ## What is ScrumTrainer?
@@ -7,7 +6,6 @@ Scrum Tuttorial App
 It's Quiz Web App Project that should help users learn about Scrum (Projekt Management)
 The App has multiple Chapters.
 
-### Example
 
 #### Chapter 0: Introduction
 - Few simple Question 
