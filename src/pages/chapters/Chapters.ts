@@ -1,14 +1,15 @@
 import { Chapter } from './../../models/Chapter';
 import { Component } from '@angular/core';
 import { ChapterView } from '../chapter/Chapter';
-import { NavController, PopoverController, ModalController, NavParams } from 'ionic-angular';
-import {Http} from '@angular/http';
+import { NavController, PopoverController, ModalController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http'
+//import * as data from "../../data/chapters/intro.json";
+
 
 import 'rxjs/add/operator/map';
 
 @Component({
-  templateUrl: 'build/pages/chapters/Chapters.html',
-  directives: [ChapterView]
+  templateUrl: 'Chapters.html'
 })
 export class Chapters
 {
@@ -16,7 +17,7 @@ export class Chapters
     public chapterList = [];
 
     constructor(public navCtrl: NavController,public popoverCtrl: PopoverController,
-        public modalCtrl: ModalController, private http: Http) {
+        public modalCtrl: ModalController, private http: HttpClient) {
     }
 
     public showChapter( chapter: Chapter )
@@ -26,14 +27,17 @@ export class Chapters
 
     public ngOnInit()
     {   
-        let IntroChapterUrl = "build/data/chapters/intro.json";
-        this.http.get(IntroChapterUrl).map(req => req.json()).subscribe(introData =>
+        let IntroChapterUrl = "assets/data/chapters/intro.json";
+        
+        this.http.get<Chapter>(IntroChapterUrl).subscribe( introData =>
         {
+            console.log(introData);
+            
             this.chapters.set("Intro", introData);
             this.chapterList.push(introData);
 
-            let chapterUrl = "build/data/chapters/chapters.json";
-            this.http.get(chapterUrl).map(req => req.json()).subscribe(data =>
+            let chapterUrl = "assets/data/chapters/chapters.json";
+            this.http.get<{chapters:Chapter[]}>(chapterUrl).subscribe(data =>
             {
                 if( data.chapters )
                 {
@@ -45,6 +49,7 @@ export class Chapters
                     }
                 }
             });
+            
         });
 
         

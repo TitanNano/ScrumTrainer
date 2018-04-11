@@ -1,6 +1,6 @@
 
 
-<ion-content padding="true" style="margin-top: 132px; padding-bottom: 200px;">
+<ion-content padding>
     <ion-grid>
         <ion-row>
             <ion-col>
@@ -22,7 +22,7 @@
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-nav-buttons (click)="revealRightAnswer()">
+                <ion-buttons (click)="revealRightAnswer()">
                 <button round *ngIf="!revealingRightAnswer">
                     <ion-icon left name="checkmark-circle"></ion-icon>
                     <ion-label>überprüfen</ion-label>
@@ -35,7 +35,7 @@
                     <ion-icon left name="checkmark-circle"></ion-icon>
                     <ion-label>überprüfen</ion-label>
                 </button>
-                </ion-nav-buttons>
+                </ion-buttons>
             </ion-col>
         </ion-row>
     </ion-grid>

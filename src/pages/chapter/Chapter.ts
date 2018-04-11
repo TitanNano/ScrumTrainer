@@ -1,7 +1,6 @@
 import { Chapter } from './../../models/Chapter';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { ViewController, Slides, Range } from 'ionic-angular';
-import { Swiper } from 'ionic-angular/components/slides/swiper-widget';
 
 import { Chapters } from '../chapters/Chapters';
 import { QuizPage } from '../quizPage/QuizPage';
@@ -9,8 +8,7 @@ import { QuizPage } from '../quizPage/QuizPage';
 
 @Component({
     selector:       'chapter',
-    templateUrl:    'build/pages/chapter/Chapter.html'
-    ,directives:     [QuizPage]
+    templateUrl:    'Chapter.html'
 })
 
 export class ChapterView implements OnInit

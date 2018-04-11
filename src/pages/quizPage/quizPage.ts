@@ -1,17 +1,15 @@
-import { Input, Output, Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { ChapterView } from '../chapter/Chapter';
-import { Chapter, QuizPart } from './../../models/Chapter';
+import { Input, Component, OnInit } from '@angular/core';
+import { QuizPart } from './../../models/Chapter';
 
 @Component({
     selector: 'quizPage',
-    inputs: ['pageData'],
-    templateUrl: 'build/pages/quizPage/QuizPage.html'
+    templateUrl: 'QuizPage.html'
 })
 
 export class QuizPage implements OnInit
 {
-    @Input() pageData:QuizPart;
+    @Input()
+    public pageData: QuizPart;
     public revealingRightAnswer = false;
     public allRightAnswers = false;
 
