@@ -1,0 +1,21 @@
+.chapter-page {
+    
+    .swiper-container {
+        pointer-events: none;
+        .scroll-content {
+            pointer-events: none;
+            * {
+                pointer-events: initial;
+            }
+
+            *[class*='disabled'] * {
+                pointer-events: none;
+            }
+        }
+        
+    }
+}
+
+.range * {
+    pointer-events: none;
+}

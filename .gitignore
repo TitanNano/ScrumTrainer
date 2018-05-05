@@ -10,3 +10,7 @@ plugins/
 Thumbs.db
 
 www/*
+
+package-lock.json
+
+.sourcemaps/main.js.map

@@ -2,10 +2,6 @@ import { Chapter } from './../../models/Chapter';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { ViewController, Slides, Range } from 'ionic-angular';
 
-import { Chapters } from '../chapters/Chapters';
-import { QuizPage } from '../quizPage/QuizPage';
-
-
 @Component({
     selector:       'chapter',
     templateUrl:    'Chapter.html'
@@ -33,14 +29,21 @@ export class ChapterView implements OnInit
     ngOnInit()
     {
         this.ranger.pin = false;
+        this.ranger.value = 1;
+    }
+
+    ionSlideTap(event)
+    {
+        console.log(event,"event");
+        return false;
     }
 
     onSlideChanged()
     {
         this.currentIndex = this.slider.getActiveIndex();
         this.isEnd = this.currentIndex == this.slider.length()-1;
-        this.rangerActiveIndex = this.currentIndex + 1
-        console.log("this.currentIndex",this.currentIndex);
+        this.rangerActiveIndex = (this.currentIndex + 1);
+        this.ranger.value = this.rangerActiveIndex;
     }
 
     wrongAnswers()
@@ -62,7 +65,6 @@ export class ChapterView implements OnInit
         if( this.isEnd != true )
         {
             this.slider.slideNext();
-            this.ranger.value = this.currentIndex;
         }
     }
 
