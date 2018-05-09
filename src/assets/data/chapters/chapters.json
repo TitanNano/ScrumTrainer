@@ -14,8 +14,7 @@
                         { "isRight" : false,    "body" : "des Marketings" },
                         { "isRight" : false,    "body" : "der Buchhaltung" },
                         { "isRight" : false,    "body" : "der Geschäftsführung" }
-                    ],
-                    "rightAnswers" : [0]
+                    ]
                 },
                 {
                     "body"      : "Er beruht auf der Erfahrung, dass viele Entwicklungsprojekte zu .... sind, um in einen vollumfänglichen Plan gefasst werden zu können.",
@@ -53,7 +52,36 @@
             "title": "Manager",
             "icon": "bowtie",
             "description": "Dein Wissen ist Macht",
-            "parts": []
+            "progressive": true,
+            "parts":     [
+                {
+                    "body"      : "I'm Ishtar, and I want to play a game with you.",
+                    "id"        : 0,
+                    "options"   :
+                    [
+                        { "goTo" : 1,   "body" : "who?" },
+                        { "goTo" : 2,   "body" : "ok" }
+                    ]
+                },
+                {
+                    "body"      : "I'm Ishtar Goddes of love and war.",
+                    "id"        : 1,
+                    "options"   :
+                    [
+                        { "goTo" : 2,    "body" : "let's play?" },
+                        { "goTo" : -1,   "body" : "later maybe" }
+                    ]
+                },
+                {
+                    "body"      : "you'll be Gilgamesh of Uruk  & I will guide you through a journey. Let's see if you will pick the same path as my beloved Gilgamesh",
+                    "id"        : 2,
+                    "options"   :
+                    [
+                        { "isRight" : true,     "goTo" : 1,   "body" : "who?" },
+                        { "isRight" : false,    "goTo" : 2,   "body" : "ok" }
+                    ]
+                }
+            ]
         },
         {
             "title": "Consultant",

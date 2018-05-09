@@ -6,7 +6,7 @@
             {{chapterData.title}}
         </ion-label>
         
-        <ion-buttons end style="margin-right: 13px;">
+        <ion-buttons *ngIf="!chapterData.progressive" end style="margin-right: 13px;">
             <button ion-button *ngIf="wrongAnswers()<1" color="danger">
                 <ion-icon style="font-size: 1em; min-width: 16px;" name="heart"></ion-icon>
             </button>
@@ -42,8 +42,7 @@
 
 
 <ion-content class="has-header chapter-page" style="background: #04d47f; touch-action: none;">
-    <ion-slides #slider disabled
-    (ionSlideTap)="ionSlideTap($event)"
+    <ion-slides #slider 
     (ionSlideDidChange)="onSlideChanged()">
 
         <ion-slide *ngFor="let page of chapterData.parts" >
@@ -53,18 +52,18 @@
     </ion-slides>
 </ion-content>
 
-<ion-footer *ngIf="isEnd!=true && chapterData.parts[currentIndex] && chapterData.parts[currentIndex].answered">
+<ion-footer *ngIf="showNextOrGoNext()">
     <ion-toolbar>
         <ion-buttons end>
             <button ion-button icon-start color="secondary" (click)="goNext()">
                 <ion-icon end name="play"></ion-icon>
-                <ion-label>Weiter</ion-label>
+                <ion-label>next</ion-label>
             </button>
         </ion-buttons>
     </ion-toolbar>
 </ion-footer>
 
-<ion-footer *ngIf="isEnd        && chapterData.parts[currentIndex] && chapterData.parts[currentIndex].answered">
+<ion-footer *ngIf="isEnd && chapterData.parts[currentIndex] && chapterData.parts[currentIndex].answered">
     <ion-toolbar>
         <ion-buttons end>
             <button ion-button icon-start color="secondary" (click)="dismiss()">

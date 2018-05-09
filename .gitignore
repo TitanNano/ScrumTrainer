@@ -5,6 +5,10 @@ node_modules/
 www/build/
 platforms/
 plugins/
+
+.sourcemaps/
+.vscode/
+
 *.swp
 .DS_Store
 Thumbs.db
@@ -13,4 +17,3 @@ www/*
 
 package-lock.json
 
-.sourcemaps/main.js.map

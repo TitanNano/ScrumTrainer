@@ -12,7 +12,7 @@
                 <ion-list>
                     <ion-item *ngFor="let option of pageData.options">
                         <ion-label left>{{option.body}}</ion-label>
-                        <ion-checkbox [(ngModel)]="option.isSelected" disabled="{{revealingRightAnswer}}"></ion-checkbox>
+                        <ion-checkbox (ionChange)="answerChanged(option)" [(ngModel)]="option.isSelected" disabled="{{revealingRightAnswer}}"></ion-checkbox>
                         <ion-label item-end style="margin:0;" *ngIf="revealingRightAnswer &&  option.isRight == option.isSelected && option.isSelected" color="secondary" ><ion-icon end small name="checkmark-circle"></ion-icon></ion-label>
                         <ion-label item-end style="margin:0;" *ngIf="revealingRightAnswer &&  option.isRight && !option.isSelected" color="danger"><ion-icon end small name="checkmark-circle"></ion-icon></ion-label>
                         <ion-label item-end style="margin:0;" *ngIf="revealingRightAnswer && !option.isRight && option.isSelected" color= "danger"><ion-icon end small name="close-circle"></ion-icon></ion-label>
@@ -22,23 +22,17 @@
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-buttons (click)="revealRightAnswer()">
-                <button *ngIf="!revealingRightAnswer"
-                ion-button icon-start round>
-                    <ion-icon left name="checkmark-circle"></ion-icon>
-                    <ion-label>überprüfen</ion-label>
-                </button>
-                <button *ngIf="revealingRightAnswer && allRightAnswers==false"
-                ion-button icon-start round disabled color="danger">
-                    <ion-icon left name="close-circle"></ion-icon>
-                    <ion-label>überprüfen</ion-label>
-                </button>
-                <button *ngIf="revealingRightAnswer && allRightAnswers"
-                ion-button icon-start round disabled color="secondary">
-                    <ion-icon left name="checkmark-circle"></ion-icon>
-                    <ion-label>überprüfen</ion-label>
+                <ion-buttons *ngIf="!this.pageData.noWrongOptions">
+                    <button ion-button icon-start round
+                    [disabled] = "revealingRightAnswer"
+                    [color] = "!revealingRightAnswer ? 'primary' : ( allRightAnswers ? 'secondary' : 'danger')"
+                    (click)="revealRightAnswer()">
+                        <ion-icon left
+                        [name]=" allRightAnswers ? 'checkmark-circle' : 'close-circle'"></ion-icon>
+                        <ion-label>überprüfen</ion-label>
                 </button>
                 </ion-buttons>
+                
             </ion-col>
         </ion-row>
     </ion-grid>

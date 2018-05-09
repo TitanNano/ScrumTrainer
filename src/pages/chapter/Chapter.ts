@@ -1,6 +1,6 @@
 import { Chapter } from './../../models/Chapter';
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { ViewController, Slides, Range } from 'ionic-angular';
+import { ViewController, Slides, Range, GESTURE_TOGGLE } from 'ionic-angular';
 
 @Component({
     selector:       'chapter',
@@ -11,7 +11,6 @@ export class ChapterView implements OnInit
 {
     public chapterData : Chapter;
     public currentIndex = 0;
-    public rangerActiveIndex = 1;
     public isEnd = false;
 
     @ViewChild('ranger') ranger: Range;
@@ -30,20 +29,38 @@ export class ChapterView implements OnInit
     {
         this.ranger.pin = false;
         this.ranger.value = 1;
+        this.slider.lockSwipes(true);
     }
 
-    ionSlideTap(event)
+    ionViewWillEnter()
     {
-        console.log(event,"event");
+        this.chapterData.resetAnswers();
+    }
+
+    showNextOrGoNext() : boolean
+    {
+        if ( !this.slider.isEnd() )
+        {
+            let qPart = this.chapterData.parts[this.slider.getActiveIndex()];
+
+            if ( qPart && qPart.answered )
+            {
+                if ( qPart.noWrongOptions )
+                {
+                    this.goNext();
+                    return false;
+                }
+                return true;
+            }
+        }
         return false;
     }
 
     onSlideChanged()
     {
         this.currentIndex = this.slider.getActiveIndex();
-        this.isEnd = this.currentIndex == this.slider.length()-1;
-        this.rangerActiveIndex = (this.currentIndex + 1);
-        this.ranger.value = this.rangerActiveIndex;
+        this.isEnd = this.slider.isEnd();
+        this.ranger.value = this.currentIndex + 1;
     }
 
     wrongAnswers()
@@ -61,11 +78,28 @@ export class ChapterView implements OnInit
 
     goNext()
     {
-        //this.slider.isEnd
-        if( this.isEnd != true )
+        this.slider.lockSwipes(false);
+        
+        if( this.slider && !this.slider.isEnd() )
         {
-            this.slider.slideNext();
+            let qPart = this.chapterData.parts[this.slider.getActiveIndex()];
+            if( qPart && qPart.noWrongOptions && typeof qPart.goTo == "number" )
+            {
+                if( qPart.goTo < 0 )
+                {
+                    this.slider.slideTo( this.slider.length() - 1 );
+                } else
+                {
+                    this.slider.slideTo( qPart.goTo );
+                }
+            }
+            else
+            {
+                this.slider.slideNext();
+            }
         }
+
+        this.slider.lockSwipes(true);
     }
 
     public allRightAnswers()

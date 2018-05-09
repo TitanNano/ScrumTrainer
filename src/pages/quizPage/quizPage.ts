@@ -1,9 +1,9 @@
 import { Input, Component, OnInit } from '@angular/core';
-import { QuizPart } from './../../models/Chapter';
+import { QuizPart, AnswerOption } from './../../models/Chapter';
 
 @Component({
     selector: 'quizPage',
-    templateUrl: 'QuizPage.html'
+    templateUrl: 'quizPage.html'
 })
 
 export class QuizPage implements OnInit
@@ -13,8 +13,21 @@ export class QuizPage implements OnInit
     public revealingRightAnswer = false;
     public allRightAnswers = false;
 
-    constructor()
+    constructor() {}
+
+    log(val) { console.log(val); }
+
+    public answerChanged( option : AnswerOption )
     {
+        if( this.pageData.noWrongOptions )
+        {
+            if( option.goTo )
+            {
+                this.pageData.goTo = option.goTo;
+            }
+
+            this.pageData.answered = true;
+        }
     }
 
     public revealRightAnswer()
