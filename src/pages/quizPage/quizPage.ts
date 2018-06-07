@@ -1,15 +1,17 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { QuizPart, AnswerOption } from './../../models/Chapter';
+import { globalAnimations } from "../animations/global";
 
 @Component({
     selector: 'quizPage',
     templateUrl: 'quizPage.html'
+    ,animations: globalAnimations
 })
 
 export class QuizPage implements OnInit
 {
     @Input()
-    public pageData: QuizPart;
+    public quizPart: QuizPart;
     public revealingRightAnswer = false;
     public allRightAnswers = false;
 
@@ -19,39 +21,30 @@ export class QuizPage implements OnInit
 
     public answerChanged( option : AnswerOption )
     {
-        if( this.pageData.noWrongOptions )
-        {
-            if( option.goTo )
-            {
-                this.pageData.goTo = option.goTo;
-            }
+        option.select();
 
-            this.pageData.answered = true;
+        if( this.quizPart.noWrongOptions )
+        {
+            this.quizPart.checkAnswers();
+            return;
         }
+        
+        if( this.quizPart.singleSelect )
+        {
+            // this.revealRightAnswer();
+        }
+
     }
 
     public revealRightAnswer()
     {
         this.revealingRightAnswer = true;
-        this.pageData.answered = true;
-        this.allRightAnswers = true;
-        
-        for( let option of this.pageData.options )
-		{
-			if(
-                ( option.isRight == true && !option.isSelected ) ||
-                ( option.isRight == false && option.isSelected )
-            )
-			{
-				this.allRightAnswers = false;
-			}
-		}
-        
-        this.pageData.allRightAnswers = this.allRightAnswers;
+        this.quizPart.checkAnswers();
+        this.allRightAnswers = this.quizPart.allRightAnswers;
     }
 
     ngOnInit()
     {
-        console.log("page Data",this.pageData);
+        // console.log("page Data",this.pageData);
     }
 }

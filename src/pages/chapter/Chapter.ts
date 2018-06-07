@@ -27,8 +27,12 @@ export class ChapterView implements OnInit
 
     ngOnInit()
     {
-        this.ranger.pin = false;
-        this.ranger.value = 1;
+        if( this.ranger )
+        {
+            this.ranger.pin = false;
+            this.ranger.value = 1;
+        }
+
         this.slider.lockSwipes(true);
     }
 
@@ -60,7 +64,10 @@ export class ChapterView implements OnInit
     {
         this.currentIndex = this.slider.getActiveIndex();
         this.isEnd = this.slider.isEnd();
-        this.ranger.value = this.currentIndex + 1;
+        if( this.ranger )
+        {
+            this.ranger.value = this.currentIndex + 1;
+        }
     }
 
     wrongAnswers()
@@ -83,11 +90,12 @@ export class ChapterView implements OnInit
         if( this.slider && !this.slider.isEnd() )
         {
             let qPart = this.chapterData.parts[this.slider.getActiveIndex()];
-            if( qPart && qPart.noWrongOptions && typeof qPart.goTo == "number" )
+            if( qPart && typeof qPart.goTo == "number" )
             {
                 if( qPart.goTo < 0 )
                 {
-                    this.slider.slideTo( this.slider.length() - 1 );
+                    // this.slider.slideTo( this.slider.length() - 1 );
+                    this.dismiss();
                 } else
                 {
                     this.slider.slideTo( qPart.goTo );

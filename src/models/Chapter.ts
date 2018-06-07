@@ -1,18 +1,26 @@
 export class AnswerOption
 {
+    
 	public body: string;
 	public isRight: boolean;
 	public isSelected: boolean;
 	public goTo: number;
+	public quizPart: QuizPart;
 	
-	constructor(data)
+	constructor( data, quizPart: QuizPart )
 	{
-		Object.assign(this, data);
-		if ( data.isRight === undefined )
-		{
-			this.isRight = true;
-		}
+		this.body = data.body;
+		this.goTo = data.goTo;
+		this.isRight = data.isRight !== undefined ? data.isRight : true;
+		this.quizPart = quizPart;
 	}
+	
+	public select() {
+		if( this.isSelected )
+		{
+			this.quizPart.select(this);
+		}
+    }
 }
 
 export class QuizPart
@@ -22,21 +30,59 @@ export class QuizPart
 	public answered: boolean = false;
 	public allRightAnswers: boolean = false;
 	public noWrongOptions: boolean = true;
+	public singleSelect: boolean = false;
 	public goTo: number;
 	
 	constructor(data)
 	{
 		this.body = data.body;
 		this.goTo = data.goTo;
+		this.singleSelect = data.singleSelect;
 
 		for( let optionData of data.options )
 		{
-			let iOpt = new AnswerOption(optionData);
-			this.noWrongOptions = this.noWrongOptions && iOpt.isRight;
-			this.options.push( iOpt );
+			let o = new AnswerOption(optionData, this);
+			this.noWrongOptions = this.noWrongOptions && o.isRight;
+			if( o.goTo )
+			{
+				this.singleSelect = true;
+			}
+			this.options.push( o );
 		}
 	}
 
+	public checkAnswers()
+	{
+		this.allRightAnswers	= true;
+		this.answered			= true;
+		
+        for( let o of this.options )
+		{
+			if( this.noWrongOptions !== true && (
+                ( o.isRight == true && !o.isSelected ) ||
+                ( o.isRight == false && o.isSelected ) )
+            )
+			{
+				this.allRightAnswers = false;
+			}
+		}
+	}
+
+	public select(selectedOption: AnswerOption) {
+		
+		if( selectedOption.goTo && selectedOption.isSelected )
+		{
+			this.goTo = selectedOption.goTo;
+		}
+		
+		if( this.singleSelect )
+        {
+            this.options.forEach( o => {
+				o.isSelected = false;
+			});
+			selectedOption.isSelected = true;
+        }
+	}
 }
 
 export class Chapter

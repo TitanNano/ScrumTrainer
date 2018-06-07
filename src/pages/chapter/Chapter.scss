@@ -1,5 +1,15 @@
-.chapter-page {
-    .range * {
+chapter {
+    ion-range * {
         pointer-events: none;
     }
+
+    .footer {
+        &::before {
+            background: none;
+        }
+        .toolbar .toolbar-background {
+            background: none;
+        }
+    }
+    
 }

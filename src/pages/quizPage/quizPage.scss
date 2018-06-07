@@ -1,0 +1,9 @@
+.quiz-page {
+
+    ion-icon[color="danger"] {
+        color : color($colors, danger);
+    }
+    ion-icon[color="secondary"] {
+        color : color($colors, secondary);
+    }
+}

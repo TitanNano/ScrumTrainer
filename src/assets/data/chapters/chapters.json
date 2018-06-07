@@ -49,10 +49,10 @@
             ]
         },
         {
-            "title": "Manager",
-            "icon": "bowtie",
-            "description": "Dein Wissen ist Macht",
-            "progressive": true,
+            "title": "Gilgamesh",
+            "icon": "navigate",
+            "description": "Path of Gods",
+            "progressive": false,
             "parts":     [
                 {
                     "body"      : "I'm Ishtar, and I want to play a game with you.",
@@ -77,8 +77,103 @@
                     "id"        : 2,
                     "options"   :
                     [
-                        { "isRight" : true,     "goTo" : 1,   "body" : "who?" },
-                        { "isRight" : false,    "goTo" : 2,   "body" : "ok" }
+                        { "goTo" : 3,   "body" : "who is Gilgamesh?" },
+                        { "goTo" : 4,   "body" : "ok" }
+                    ]
+                },
+                {
+                    "body"      : "Gilgamesh was a demigod & the king of Uruk, what you wold know as Irak.",
+                    "id"        : 3,
+                    "options"   :
+                    [
+                        { "goTo" : 4,   "body" : "ok" }
+                    ]
+                },
+                {
+                    "body"      : "I will guide you through a journey.\nLet's see if you will pick the same path as my beloved Gilgamesh",
+                    "id"        : 4,
+                    "options"   :
+                    [
+                        { "goTo" : 5,   "body" : "ok" }
+                    ]
+                },
+                {
+                    "body"      : "Imagine you are Gilgamesh. Your people do not obey you, what would you do?",
+                    "id"        : 5,
+                    "options"   :
+                    [
+                        { "isRight" : false, "goTo" : 6,   "body" : "Be Patient" },
+                        { "isRight" : true, "goTo" : 8,   "body" : "Opress them" }
+                    ]
+                },
+                {
+                    "body"      : "more & more chaos is building up.. \nYour generals are forcing them to obey",
+                    "id"        : 6,
+                    "options"   :
+                    [
+                        { "isRight" : true, "goTo" : 8,   "body" : "Opress them" },
+                        { "isRight" : false, "goTo" : 7,   "body" : "Punish the generals" }
+                    ]
+                },
+                {
+                    "body"      : "nobody is left to obey you, you are not regarded a king or a god anymore",
+                    "id"        : 7,
+                    "options"   :
+                    [
+                        { "goTo" : 0,   "body" : "start over" },
+                        { "goTo" : -1,   "body" : "quit" }
+                    ]
+                },
+                {
+                    "body"      : "The gods are not happy with your ignorance of your peoples will.\nThey created Enkido a wild man as strong as you, to fight & humble you.",
+                    "id"        : 8,
+                    "options"   :
+                    [
+                        { "isRight" : false, "goTo" : 9,   "body" : "Send your best men" },
+                        { "isRight" : true, "goTo" : 10,   "body" : "fight him yourself" }
+                    ]
+                },
+                {
+                    "body"      : "Your men were defeated.",
+                    "id"        : 9,
+                    "options"   :
+                    [
+                        { "goTo" : 10,   "body" : "fight him yourself" }
+                    ]
+                },
+                {
+                    "body"      : "You fought Enkido for 7 days & 8 nights. Then you won. The fight created a strong bound between you.",
+                    "id"        : 10,
+                    "options"   :
+                    [
+                        { "isRight" : true, "goTo" : 12,   "body" : "Piss of the Gods" },
+                        { "isRight" : false, "goTo" : 11,   "body" : "Pray to the Gods" }
+                    ]
+                },
+                {
+                    "body"      : "Your boared",
+                    "id"        : 11,
+                    "options"   :
+                    [
+                        {"goTo" : 12,   "body" : "Go on an Adventure" }
+                    ]
+                },
+                {
+                    "body"      : "You'll be traveling with Enkido to the Cedar Forest to hunt down & kill Humbaba.",
+                    "id"        : 12,
+                    "options"   :
+                    [
+                        { "goTo" : 13,   "body" : "Who is Humbaba" },
+                        { "goTo" : 11,   "body" : "Pray to the Gods" }
+                    ]
+                },
+                {
+                    "body"      : "Humbaba is the demigod monster & king of the Cedar Forest. In what yould",
+                    "id"        : 13,
+                    "options"   :
+                    [
+                        { "goTo" : 14,   "body" : "Who is Humbaba" },
+                        { "goTo" : 11,   "body" : "Pray to the Gods" }
                     ]
                 }
             ]

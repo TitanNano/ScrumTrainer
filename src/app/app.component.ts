@@ -8,7 +8,7 @@ import { Settings } from '../pages/settings/Settings';
 import { Page } from 'ionic-angular/navigation/nav-util';
 
 @Component({
-  templateUrl: 'app.html'
+	templateUrl: 'app.html'
 })
 export class MyApp {
 	@ViewChild('content') nav: NavController;

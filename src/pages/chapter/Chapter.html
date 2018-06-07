@@ -6,7 +6,7 @@
             {{chapterData.title}}
         </ion-label>
         
-        <ion-buttons *ngIf="!chapterData.progressive" end style="margin-right: 13px;">
+        <ion-buttons end style="margin-right: 13px;">
             <button ion-button *ngIf="wrongAnswers()<1" color="danger">
                 <ion-icon style="font-size: 1em; min-width: 16px;" name="heart"></ion-icon>
             </button>
@@ -33,7 +33,7 @@
         </ion-buttons>
     </ion-navbar>
     
-    <ion-item>
+    <ion-item *ngIf="chapterData.progressive!=false">
         <ion-range #ranger min="0" max="{{chapterData.parts.length}}" snaps="true" color="secondary" item-left>
             <ion-icon  range-right small name="trophy"></ion-icon>
         </ion-range>
@@ -45,8 +45,8 @@
     <ion-slides #slider 
     (ionSlideDidChange)="onSlideChanged()">
 
-        <ion-slide *ngFor="let page of chapterData.parts" >
-            <quizPage [pageData]="page"></quizPage>
+        <ion-slide *ngFor="let quizPart of chapterData.parts" >
+            <quizPage [quizPart]="quizPart"></quizPage>
         </ion-slide>
 
     </ion-slides>
@@ -68,7 +68,7 @@
         <ion-buttons end>
             <button ion-button icon-start color="secondary" (click)="dismiss()">
                 <ion-icon end name="trophy"></ion-icon>
-                <ion-label>Beenden</ion-label>
+                <ion-label>Fin</ion-label>
             </button>
         </ion-buttons>
     </ion-toolbar>
