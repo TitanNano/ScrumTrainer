@@ -3,19 +3,19 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Kapitel</ion-title>
+        <ion-title>Chapters</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding="true" class="has-header">
-    <ion-list id="kapitel-list1">
-        <ion-item *ngFor="let chapter of chapterList" id="kapitel-list-item{{$index}}" (click)="showChapter(chapter)">
+    <ion-list>
+        <ion-item *ngFor="let chapter of chapterList" (click)="showChapter(chapter)">
             <ion-icon name="{{chapter.icon}}" item-left></ion-icon>
             <h3>
-                {{chapter.title}}
+                {{ chapter.title }}
             </h3>
             <p>
-                {{chapter.description}}
+                {{ chapter.description }}
             </p>
             <ion-icon *ngIf="chapter.allAnswered" name="checkbox-outline" item-right></ion-icon>
         </ion-item>

@@ -1,7 +1,7 @@
 {
     "title": "Intro",
     "icon": "bulb",
-    "description": "Scrum Trainer Tuttorial",
+    "description": "ngx-quiz demo introduction",
     "parts":
     [
         {
@@ -24,12 +24,12 @@
             ]
         },
         {
-            "body"      : "pick the wrong answer :\n ........ to see what happens",
+            "body"      : "this is not a test, any answer is ........ ",
             "options"   :
             [
-                { "isRight" : false,    "body" : "wrong" },
-                { "isRight" : true,     "body" : "right" },
-                { "isRight" : true,    "body" : "also right" }
+                { "body" : "ok" },
+                { "body" : "always posible" },
+                { "body" : "kind of right" }
             ]
         },
         {
